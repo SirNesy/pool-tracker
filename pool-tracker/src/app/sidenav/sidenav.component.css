@@ -1,0 +1,22 @@
+.drawer-container {
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border: 1px solid rgba(70, 29, 29, 0.5);
+  color: bisque;
+}
+
+.drawer-sidenav-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.drawer-sidenav {
+  padding: 20px;
+}
+.home-icon {
+  margin: 0;
+  /* padding-right: 120px; */
+}

@@ -1,0 +1,21 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="drawer-sidenav" [mode]="isScreenSmall ? 'over': 'side'" [opened]="!isScreenSmall">
+    <mat-toolbar class="home-icon">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="home"
+      >
+      </mat-icon
+      >Home
+    </mat-toolbar>
+  </mat-drawer>
+
+  <div class="drawer-sidenav-content">
+    <app-toolbar></app-toolbar>
+    <router-outlet></router-outlet>
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+</mat-drawer-container>
