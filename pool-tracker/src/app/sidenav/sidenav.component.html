@@ -1,5 +1,10 @@
 <mat-drawer-container class="drawer-container" autosize>
-  <mat-drawer #drawer class="drawer-sidenav" [mode]="isScreenSmall ? 'over': 'side'" [opened]="!isScreenSmall">
+  <mat-drawer
+    #drawer
+    class="drawer-sidenav"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+    [opened]="!isScreenSmall"
+  >
     <mat-toolbar class="home-icon">
       <mat-icon
         aria-hidden="false"
@@ -9,13 +14,23 @@
       </mat-icon
       >Home
     </mat-toolbar>
+    <button mat-button class="leaderboard-button" (click)="openDialog()">
+      <i class="fa-sharp fa-solid fa-trophy fa-beat fa-lg icon"></i>
+      Leaderboard
+    </button>
+    <button mat-button class="add-player-button" (click)="openDialog()">
+      <i class="fa-solid fa-user-plus fa-beat fa-lg icon"></i>
+      New Player
+    </button>
+    <button  class="server-button" mat-button (click)="openSnackBar()" [mat-dialog-close]="true">
+      <i class="fa-solid fa-server fa-beat fa-lg icon"></i>
+      Server Messages
+      
+    </button>
   </mat-drawer>
 
   <div class="drawer-sidenav-content">
-    <app-toolbar></app-toolbar>
+    <app-toolbar (toggleSideNav)="drawer.toggle()"></app-toolbar>
     <router-outlet></router-outlet>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
   </div>
 </mat-drawer-container>

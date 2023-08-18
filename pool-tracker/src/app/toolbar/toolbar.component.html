@@ -1,16 +1,8 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>
-        pool
-    </mat-icon>
-  </button>
+  <mat-icon> pool </mat-icon>
   <span>Tracker</span>
-  <span class="example-spacer"></span>
-
-
-  
+  <span class="toggle-spacer"></span>
+  <button (click)="toggleSideNav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>

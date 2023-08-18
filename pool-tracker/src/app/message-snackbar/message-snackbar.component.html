@@ -1,0 +1,17 @@
+<div *ngIf="messagesArray.length">
+  <span class="snackbar-player" matSnackBarLabel> Message:</span>
+  <span matSnackBarActions>
+    <ul *ngFor="let message of messagesArray">
+        <li>
+            {{message}}
+        </li>
+    </ul>
+    <button
+      mat-button
+      matSnackBarAction
+      (click)="snackBarRef.dismissWithAction()"
+    >
+      <mat-icon> pool </mat-icon>
+    </button>
+  </span>
+</div>

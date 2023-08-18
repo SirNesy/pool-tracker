@@ -1,0 +1,50 @@
+.player-card {
+  min-width: 170px;
+}
+.sort-card{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.player-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* text-align: center; */
+}
+.player-list {
+  list-style: none;
+}
+
+.win-container,
+.loss-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+.add-button {
+  color: green;
+  background-color: #e6dbd0;
+  border-radius: 50%;
+}
+
+.minus-button {
+  color: red;
+  background-color: #e6dbd0;
+  border-radius: 50%;
+}
+
+.mdc-card__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 52px;
+  padding: 10pxpx;
+  justify-content: center;
+}
+.delete-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}

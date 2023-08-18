@@ -12,6 +12,14 @@ import { CardsComponent } from './cards/cards.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { PlayerSnackbarComponent } from './player-snackbar/player-snackbar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +27,9 @@ import { MatButtonModule } from '@angular/material/button';
     SidenavComponent,
     ToolbarComponent,
     CardsComponent,
+    DialogComponent,
+    PlayerSnackbarComponent,
+    MessageSnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +40,13 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
