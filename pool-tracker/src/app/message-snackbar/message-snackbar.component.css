@@ -1,7 +1,12 @@
 :host {
-    display: flex;
-  }
+  display: flex;
+}
 
-  .snackbar-player {
-    color: green;
-  }
+.snackbar-player {
+  color: green;
+  font-style: italic;
+}
+.mat-snack-bar-container {
+  overflow: scroll;
+  text-overflow: ellipsis;
+}

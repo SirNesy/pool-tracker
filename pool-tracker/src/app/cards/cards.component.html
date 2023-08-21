@@ -14,25 +14,25 @@
             <div class="win-container">
               <h2>Win: {{ player.win }}</h2>
               <button class="add-button">
-                <i class="fa-sharp fa-solid fa-plus fa-beat fa-lg" (click)="handleIncrease(player)"></i>
+                <i class="fa-sharp fa-solid fa-plus fa-beat fa-lg" (click)="handleWinIncrease(player)"></i>
               </button>
               <button class="minus-button">
-                <i class="fa-sharp fa-solid fa-minus fa-beat fa-lg"></i>
+                <i class="fa-sharp fa-solid fa-minus fa-beat fa-lg" (click)="handleWinDecrease(player)"></i>
               </button>
             </div>
             <div class="loss-container">
               <h2>Loss: {{ player.loss }}</h2>
               <button class="add-button">
-                <i class="fa-sharp fa-solid fa-plus fa-beat fa-lg" (click)="handleIncrease(player)"></i>
+                <i class="fa-sharp fa-solid fa-plus fa-beat fa-lg" (click)="handleLossIncrease(player)"></i>
               </button>
               <button class="minus-button">
-                <i class="fa-sharp fa-solid fa-minus fa-beat fa-lg"></i>
+                <i class="fa-sharp fa-solid fa-minus fa-beat fa-lg" (click)="handleLossDecrease(player)"></i>
               </button>
             </div>
           </mat-card-content>
           <mat-card-actions>
             <button class="delete-button">
-              <i class="fa-sharp fa-solid fa-trash fa-flip fa-lg"></i>
+              <i class="fa-sharp fa-solid fa-trash fa-flip fa-lg" (click)="handleDelete(player)"></i>
             </button>
           </mat-card-actions>
         </mat-card>

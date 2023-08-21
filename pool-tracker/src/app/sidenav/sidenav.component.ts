@@ -15,9 +15,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./sidenav.component.css'],
 })
 export class SidenavComponent implements OnInit {
-  showFiller = false;
+  public showFiller = false;
   public isScreenSmall!: boolean;
-  durationInSeconds = 10
+  public durationInSeconds = 10
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,private _snackBar: MatSnackBar
@@ -33,6 +34,7 @@ export class SidenavComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
   openSnackBar() {
     this._snackBar.openFromComponent(MessageSnackbarComponent, {
       duration: this.durationInSeconds * 1000,

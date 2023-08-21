@@ -9,6 +9,6 @@ import { MatSnackBarRef } from '@angular/material/snack-bar';
 })
 export class MessageSnackbarComponent {
   constructor(public messageService: MessageService) {}
-  messagesArray: string[] = this.messageService.messages
+  messagesArray: string[] = this.messageService.messages;
   snackBarRef = inject(MatSnackBarRef);
 }
