@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-cards',
@@ -9,16 +10,24 @@ import { Player } from '../player';
 })
 export class CardsComponent implements OnInit {
     Players: Player[] = [];
+    sub!: Subscription;
     constructor(private playerService: PlayerService) {}
 
     getPlayers(): void {
-        this.playerService.getPlayers().subscribe((Players) => {
-            console.log('Players updated');
+        this.sub = this.playerService.getPlayers().subscribe((Players) => {
             this.Players = Players;
+            this.Players.forEach(function (player) {
+                player.calculatePoints = () => player.win * 3 + player.loss;
+            })
+            console.log(this.Players);
         });
     }
 
-    //on destroy
+        //on destroy
+        ngOnDestroy(): void {
+        this.sub.unsubscribe();
+    }
+
     handleWinIncrease(player: Player) {
         const increment = 1;
         this.playerService.winIncrease(player, increment).subscribe();
@@ -36,11 +45,12 @@ export class CardsComponent implements OnInit {
         this.playerService.lossIncrease(player, increment).subscribe();
     }
     handleDelete(deletedPlayer: Player) {
-        this.Players = this.Players.filter((player) => player !== deletedPlayer);
+        this.Players = this.Players.filter((player) => player !== deletedPlayer); //optimistic rendering
         this.playerService.deletePlayer(deletedPlayer.id).subscribe();
     }
+
     ngOnInit(): void {
-        // this.cdr.detectChanges();
         this.getPlayers();
+        this.playerService.playerUpdateEvent.subscribe(() => this.getPlayers());
     }
 }

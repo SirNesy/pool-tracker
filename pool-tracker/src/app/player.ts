@@ -3,4 +3,5 @@ export interface Player {
   name: string;
   win: number;
   loss: number;
+  calculatePoints?: () => number
 }

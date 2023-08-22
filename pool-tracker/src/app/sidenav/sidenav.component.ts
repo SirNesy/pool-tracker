@@ -30,8 +30,7 @@ export class SidenavComponent implements OnInit {
       height: '400px',
       data: { message: 'Hello from the dialog!' }, // You can pass data to the dialog
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe(() => {
     });
   }
 

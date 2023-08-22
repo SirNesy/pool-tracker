@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Player } from './player';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,16 +10,17 @@ import { MessageService } from './message.service';
 })
 export class PlayerService {
     private playersUrl = 'api/players';
+    playerUpdateEvent: EventEmitter<void> = new EventEmitter();
 
-    constructor(
-        private http: HttpClient,
-        // private http: HttpClientService;
-        private messageService: MessageService,
-    ) {}
+    constructor(private http: HttpClient, private messageService: MessageService) {}
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
+
+    triggerPlayerUpdate() {
+        this.playerUpdateEvent.emit();
+    }
 
     private log(message: string): void {
         this.messageService.add(`Player Service: ${message}`);
@@ -70,7 +71,6 @@ export class PlayerService {
     }
 
     addPlayer(player: Player): Observable<Player> {
-        return this.http.post<Player>(this.playersUrl, player, this.httpOptions)
-        .pipe(tap((newPlayer: Player) => this.log(`Player ${newPlayer.name} added`)));
+        return this.http.post<Player>(this.playersUrl, player, this.httpOptions).pipe(tap((newPlayer: Player) => this.log(`Player ${newPlayer.name} added`)));
     }
 }

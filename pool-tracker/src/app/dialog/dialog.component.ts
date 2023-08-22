@@ -4,35 +4,33 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PlayerSnackbarComponent } from '../player-snackbar/player-snackbar.component';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
-// import { Player } from '../player';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css'],
+    selector: 'app-dialog',
+    templateUrl: './dialog.component.html',
+    styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent {
-  durationInSeconds: number = 5;
-  // constructor(public data: any) {}
-  constructor(
-    private _snackBar: MatSnackBar,
-    private playerService: PlayerService
-  ) {}
+    durationInSeconds: number = 5;
+    public name: string = '';
+    public win: number = 0;
+    public loss: number = 0;
 
-  openSnackBar() {
-    this._snackBar.openFromComponent(PlayerSnackbarComponent, {
-      duration: this.durationInSeconds * 1000,
-    });
-  }
-  add(name: string, paramWin: string, paramLoss: string) {
-    // convertedWin : number = Number(win)
-    name = name.trim();
-    const win = Number(paramWin.trim());
-    const loss = Number(paramLoss.trim());
-    console.log(name, win, loss);
-    if (!name) {
-      return;
+    constructor(private _snackBar: MatSnackBar, private playerService: PlayerService) {}
+
+    openSnackBar() {
+        this._snackBar.openFromComponent(PlayerSnackbarComponent, {
+            duration: this.durationInSeconds * 1000,
+        });
     }
-    this.playerService.addPlayer({ name, win, loss } as Player).subscribe();
-  }
+    add(name: string, paramWin: number, paramLoss: number) {
+        name = name.trim();
+        const win = paramWin
+        const loss = paramLoss
+        console.log(name, win, loss);
+        if (!name) {
+            return;
+        }
+        this.playerService.addPlayer({ name, win, loss } as Player ).subscribe(() => this.playerService.triggerPlayerUpdate());
+    }
 }

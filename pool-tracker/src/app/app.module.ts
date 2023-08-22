@@ -20,35 +20,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidenavComponent,
-    ToolbarComponent,
-    CardsComponent,
-    DialogComponent,
-    PlayerSnackbarComponent,
-    MessageSnackbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-    }),
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, SidenavComponent, ToolbarComponent, CardsComponent, DialogComponent, PlayerSnackbarComponent, MessageSnackbarComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+            dataEncapsulation: false,
+        }),
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
