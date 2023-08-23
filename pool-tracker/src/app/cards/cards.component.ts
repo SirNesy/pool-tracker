@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
 import { Subscription } from 'rxjs';
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
     templateUrl: './cards.component.html',
     styleUrls: ['./cards.component.css'],
 })
+// @Output({})
 export class CardsComponent implements OnInit {
     Players: Player[] = [];
     sub!: Subscription;
@@ -18,13 +19,14 @@ export class CardsComponent implements OnInit {
             this.Players = Players;
             this.Players.forEach(function (player) {
                 player.calculatePoints = () => player.win * 3 + player.loss;
-            })
+            });
+            this.playerService.updateLeaderboardDataSubject(this.Players);
             console.log(this.Players);
         });
     }
 
-        //on destroy
-        ngOnDestroy(): void {
+    //on destroy
+    ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
 

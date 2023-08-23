@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Player } from './player';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
@@ -11,6 +11,12 @@ import { MessageService } from './message.service';
 export class PlayerService {
     private playersUrl = 'api/players';
     playerUpdateEvent: EventEmitter<void> = new EventEmitter();
+    private leaderboardDataSubject = new BehaviorSubject<Player[]>([])
+    leaderboardData$ = this.leaderboardDataSubject.asObservable()
+
+    updateLeaderboardDataSubject (data : Player[]): void {
+        this.leaderboardDataSubject.next(data)
+    }
 
     constructor(private http: HttpClient, private messageService: MessageService) {}
 

@@ -21,9 +21,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 import { FormsModule } from '@angular/forms';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
-    declarations: [AppComponent, SidenavComponent, ToolbarComponent, CardsComponent, DialogComponent, PlayerSnackbarComponent, MessageSnackbarComponent],
+    declarations: [AppComponent, SidenavComponent, ToolbarComponent, CardsComponent, DialogComponent, PlayerSnackbarComponent, MessageSnackbarComponent, LeaderboardComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

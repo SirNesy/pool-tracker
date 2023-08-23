@@ -1,24 +1,26 @@
 .drawer-container {
-  width: 100%;
-  min-width: 100%;
-  height: 100%;
-  min-height: 100%;
-  border: 1px solid rgba(70, 29, 29, 0.5);
-  color: bisque;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border: 1px solid rgba(70, 29, 29, 0.5);
+    color: bisque;
 }
 
 .drawer-sidenav {
-  padding: 5px;
-  width: 18%;
+    padding: 5px;
+    width: 18%;
 }
 .home-icon {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
-.add-player-button,.leaderboard-button, .server-button {
-  background-color: black;
-  width: 100%;
-  height: 64px;
-  margin-bottom: 20px;
+.add-player-button,
+.leaderboard-button,
+.server-button {
+    background-color: black;
+    width: 100%;
+    height: 64px;
+    margin-bottom: 20px;
 }
 /* .leaderboard-button {
   background-color: black;
@@ -28,5 +30,14 @@
 } */
 
 .icon {
-  margin-right: 15px;
+    margin-right: 15px;
+}
+
+.home-link {
+    text-decoration: none;
+    color: #e2d5d5;
+}
+#pool-icon {
+    font-size: 30px;
+    padding-right: 10px;
 }
