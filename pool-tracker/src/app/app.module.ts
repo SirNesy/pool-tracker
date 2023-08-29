@@ -22,9 +22,20 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 import { FormsModule } from '@angular/forms';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-    declarations: [AppComponent, SidenavComponent, ToolbarComponent, CardsComponent, DialogComponent, PlayerSnackbarComponent, MessageSnackbarComponent, LeaderboardComponent],
+    declarations: [
+        AppComponent,
+        SidenavComponent,
+        ToolbarComponent,
+        CardsComponent,
+        DialogComponent,
+        PlayerSnackbarComponent,
+        MessageSnackbarComponent,
+        LeaderboardComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -33,9 +44,10 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
         MatToolbarModule,
         MatSidenavModule,
         MatCardModule,
-        MatIconModule,
+        MatIconModule,MatSortModule,
         MatButtonModule,
         MatDialogModule,
+        MatTableModule,
         MatSnackBarModule,
         HttpClientModule,
         HttpClientModule,

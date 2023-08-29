@@ -11,11 +11,11 @@ import { MessageService } from './message.service';
 export class PlayerService {
     private playersUrl = 'api/players';
     playerUpdateEvent: EventEmitter<void> = new EventEmitter();
-    private leaderboardDataSubject = new BehaviorSubject<Player[]>([])
-    leaderboardData$ = this.leaderboardDataSubject.asObservable()
+    private leaderboardDataSubject = new BehaviorSubject<Player[]>([]);
+    leaderboardData$ = this.leaderboardDataSubject.asObservable();
 
-    updateLeaderboardDataSubject (data : Player[]): void {
-        this.leaderboardDataSubject.next(data)
+    updateLeaderboardDataSubject(data: Player[]): void {
+        this.leaderboardDataSubject.next(data);
     }
 
     constructor(private http: HttpClient, private messageService: MessageService) {}
@@ -36,7 +36,6 @@ export class PlayerService {
         return (error: any): Observable<T> => {
             this.log(`${operation} failed: ${error.message}`);
             console.log(error);
-
             return of(result as T);
         };
     }
