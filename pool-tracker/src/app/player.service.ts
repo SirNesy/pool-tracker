@@ -9,7 +9,7 @@ import { MessageService } from './message.service';
     providedIn: 'root',
 })
 export class PlayerService {
-    private playersUrl = 'api/players';
+    private playersUrl = 'https://localhost:7263/api/players';
     playerUpdateEvent: EventEmitter<void> = new EventEmitter();
     private leaderboardDataSubject = new BehaviorSubject<Player[]>([]);
     leaderboardData$ = this.leaderboardDataSubject.asObservable();
@@ -35,7 +35,7 @@ export class PlayerService {
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
             this.log(`${operation} failed: ${error.message}`);
-            console.log(error);
+            // console.log(error);
             return of(result as T);
         };
     }
@@ -48,12 +48,21 @@ export class PlayerService {
     }
 
     winIncrease(player: Player, increment: number): Observable<Player> {
-        const patchUrl = `${this.playersUrl}/${player.id}`;
-        player.win += increment;
+        const patchUrl = `${this.playersUrl}/${player.id}/increase-win`;
+        player.win += increment; // optimistic rendering
 
         return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
             tap((_) => this.log(`Player${player.id} win implemented`)),
             catchError(this.handleError<Player>('winIncrease')),
+        );
+    }
+    winDecrease(player: Player, increment: number): Observable<Player> {
+        const patchUrl = `${this.playersUrl}/${player.id}/decrease-win`;
+        player.win += increment;
+
+        return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
+            tap((_) => this.log(`Player${player.id} win implemented`)),
+            catchError(this.handleError<Player>('winDecrease')),
         );
     }
 
@@ -64,6 +73,16 @@ export class PlayerService {
         return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
             tap((_) => this.log(`Player${player.id} loss implemented`)),
             catchError(this.handleError<Player>('lossIncrease')),
+        );
+    }
+
+    lossDecrease(player: Player, increment: number): Observable<Player> {
+        const patchUrl = `${this.playersUrl}/${player.id}`;
+        player.loss += increment;
+
+        return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
+            tap((_) => this.log(`Player${player.id} loss implemented`)),
+            catchError(this.handleError<Player>('lossDecrease')),
         );
     }
 

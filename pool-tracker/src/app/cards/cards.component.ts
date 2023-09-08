@@ -21,11 +21,11 @@ export class CardsComponent implements OnInit {
                 player.calculatePoints = () => player.win * 3 + player.loss;
             });
             this.playerService.updateLeaderboardDataSubject(this.Players);
-            console.log(this.Players);
+            // console.log(this.Players);
         });
     }
 
-    //on destroy
+    // on destroy
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
@@ -40,7 +40,7 @@ export class CardsComponent implements OnInit {
     }
     handleWinDecrease(player: Player) {
         const increment = -1;
-        this.playerService.winIncrease(player, increment).subscribe();
+        this.playerService.winDecrease(player, increment).subscribe();
     }
     handleLossDecrease(player: Player) {
         const increment = -1;

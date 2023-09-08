@@ -18,7 +18,7 @@ import { PlayerSnackbarComponent } from './player-snackbar/player-snackbar.compo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+//import { InMemoryDataService } from './in-memory-data.service';
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 import { FormsModule } from '@angular/forms';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
@@ -44,16 +44,14 @@ import { MatSortModule } from '@angular/material/sort';
         MatToolbarModule,
         MatSidenavModule,
         MatCardModule,
-        MatIconModule,MatSortModule,
+        MatIconModule,
+        MatSortModule,
         MatButtonModule,
         MatDialogModule,
         MatTableModule,
         MatSnackBarModule,
         HttpClientModule,
-        HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-            dataEncapsulation: false,
-        }),
+
     ],
     providers: [],
     bootstrap: [AppComponent],
