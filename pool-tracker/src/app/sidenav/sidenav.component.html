@@ -1,5 +1,5 @@
 <mat-drawer-container class="drawer-container" autosize>
-    <mat-drawer #drawer class="drawer-sidenav" [mode]="isScreenSmall ? 'over' : 'side'" [opened]="!isScreenSmall">
+    <mat-drawer #drawer class="drawer-sidenav svg-background" [mode]="isScreenSmall ? 'over' : 'side'" [opened]="!isScreenSmall">
         <mat-toolbar class="home-icon">
             <a class="home-link" routerLink="">
                 <mat-icon id="pool-icon"> pool </mat-icon>
@@ -21,7 +21,6 @@
             Server Messages
         </button>
     </mat-drawer>
-
     <div class="drawer-sidenav-content">
         <app-toolbar (toggleSideNav)="drawer.toggle()"></app-toolbar>
         <router-outlet></router-outlet>

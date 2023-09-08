@@ -67,7 +67,7 @@ export class PlayerService {
     }
 
     lossIncrease(player: Player, increment: number): Observable<Player> {
-        const patchUrl = `${this.playersUrl}/${player.id}`;
+        const patchUrl = `${this.playersUrl}/${player.id}/increase-loss`;
         player.loss += increment;
 
         return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
@@ -77,7 +77,7 @@ export class PlayerService {
     }
 
     lossDecrease(player: Player, increment: number): Observable<Player> {
-        const patchUrl = `${this.playersUrl}/${player.id}`;
+        const patchUrl = `${this.playersUrl}/${player.id}/decrease-loss`;
         player.loss += increment;
 
         return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(

@@ -1,4 +1,21 @@
 #topic {
     padding: 20px;
     text-align: center;
-  }
+}
+
+.svg-background {
+    background-image: url('../images/snooker.svg');
+    background-size: cover;
+}
+.table-container {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.table-content {
+    background-color: transparent;
+}
+
+#text-color {
+    color: wite;
+    font-size: x-large;
+}

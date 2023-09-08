@@ -22,12 +22,6 @@
     height: 64px;
     margin-bottom: 20px;
 }
-/* .leaderboard-button {
-  background-color: black;
-  width: 100%;
-  height: 64px;
-  margin-bottom: 20px;
-} */
 
 .icon {
     margin-right: 15px;
@@ -40,4 +34,9 @@
 #pool-icon {
     font-size: 30px;
     padding-right: 10px;
+}
+
+.svg-background {
+    background-image: url('../images/nicubunu_Eight_ball.svg');
+    background-size: auto;
 }

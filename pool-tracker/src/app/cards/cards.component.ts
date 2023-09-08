@@ -44,7 +44,7 @@ export class CardsComponent implements OnInit {
     }
     handleLossDecrease(player: Player) {
         const increment = -1;
-        this.playerService.lossIncrease(player, increment).subscribe();
+        this.playerService.lossDecrease(player, increment).subscribe();
     }
     handleDelete(deletedPlayer: Player) {
         this.Players = this.Players.filter((player) => player !== deletedPlayer); //optimistic rendering
