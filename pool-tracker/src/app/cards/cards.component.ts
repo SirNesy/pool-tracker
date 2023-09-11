@@ -8,7 +8,6 @@ import { Subscription } from 'rxjs';
     templateUrl: './cards.component.html',
     styleUrls: ['./cards.component.css'],
 })
-// @Output({})
 export class CardsComponent implements OnInit {
     Players: Player[] = [];
     sub!: Subscription;
@@ -17,15 +16,13 @@ export class CardsComponent implements OnInit {
     getPlayers(): void {
         this.sub = this.playerService.getPlayers().subscribe((Players) => {
             this.Players = Players;
-            this.Players.forEach(function (player) {
-                player.calculatePoints = () => player.win * 3 + player.loss;
+            this.Players.forEach((player: Player) => {
+                player.point = this.playerService.calculatePoints(player);
             });
             this.playerService.updateLeaderboardDataSubject(this.Players);
-            // console.log(this.Players);
         });
     }
 
-    // on destroy
     ngOnDestroy(): void {
         this.sub.unsubscribe();
     }
@@ -47,7 +44,7 @@ export class CardsComponent implements OnInit {
         this.playerService.lossDecrease(player, increment).subscribe();
     }
     handleDelete(deletedPlayer: Player) {
-        this.Players = this.Players.filter((player) => player !== deletedPlayer); //optimistic rendering
+        this.Players = this.Players.filter((player) => player !== deletedPlayer);
         this.playerService.deletePlayer(deletedPlayer.id).subscribe();
     }
 

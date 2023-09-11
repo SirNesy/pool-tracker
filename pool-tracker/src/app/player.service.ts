@@ -18,6 +18,8 @@ export class PlayerService {
         this.leaderboardDataSubject.next(data);
     }
 
+    calculatePoints = (player: Player) => player.win * 3 + player.loss;
+
     constructor(private http: HttpClient, private messageService: MessageService) {}
 
     httpOptions = {
@@ -42,7 +44,9 @@ export class PlayerService {
 
     getPlayers(): Observable<Player[]> {
         return this.http.get<Player[]>(this.playersUrl).pipe(
-            tap((_) => this.log('Players gotten')),
+
+            
+            tap((player) => this.log('Players gotten',)),
             catchError(this.handleError<Player[]>('getPlayers', [])),
         );
     }

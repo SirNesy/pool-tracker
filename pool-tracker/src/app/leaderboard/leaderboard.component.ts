@@ -22,17 +22,8 @@ export class LeaderboardComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['id', 'name', 'win', 'loss', 'point'];
     ngOnInit(): void {
         this.playerService.leaderboardData$.subscribe((players) => (this.players = players));
-        this.players = this.players.map((player) => {
-            if (player.calculatePoints) {
-                return {
-                    ...player,
-                    point: player.calculatePoints(),
-                };
-            }
-            return player;
-        });
+        this.players.sort((a, b) => b.point! - a.point!);
         this.dataSource.data = this.players;
-        console.log(this.players);
     }
     announceSortChange(sortState: Sort) {
         if (sortState.direction) {
