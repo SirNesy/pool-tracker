@@ -25,12 +25,8 @@ export class DialogComponent {
     }
     add(name: string, paramWin: number, paramLoss: number) {
         name = name.trim();
-        const win = paramWin
-        const loss = paramLoss
-        console.log(name, win, loss);
-        if (!name) {
-            return;
-        }
-        this.playerService.addPlayer({ name, win, loss } as Player ).subscribe(() => this.playerService.triggerPlayerUpdate());
+        const win = paramWin;
+        const loss = paramLoss;
+        this.playerService.addPlayer({ name, win, loss } as Player).subscribe(() => this.playerService.triggerPlayerUpdate());
     }
 }
