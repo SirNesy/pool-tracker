@@ -30,18 +30,22 @@ export class CardsComponent implements OnInit {
     handleWinIncrease(player: Player) {
         const increment = 1;
         this.playerService.winIncrease(player, increment).subscribe();
+        player.point = this.playerService.calculatePoints(player);
     }
     handleLossIncrease(player: Player) {
         const increment = 1;
         this.playerService.lossIncrease(player, increment).subscribe();
+        player.point = this.playerService.calculatePoints(player);
     }
     handleWinDecrease(player: Player) {
         const increment = -1;
         this.playerService.winDecrease(player, increment).subscribe();
+        player.point = this.playerService.calculatePoints(player);
     }
     handleLossDecrease(player: Player) {
         const increment = -1;
         this.playerService.lossDecrease(player, increment).subscribe();
+        player.point = this.playerService.calculatePoints(player);
     }
     handleDelete(deletedPlayer: Player) {
         this.Players = this.Players.filter((player) => player !== deletedPlayer);

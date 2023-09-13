@@ -17,7 +17,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { PlayerSnackbarComponent } from './player-snackbar/player-snackbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService } from './in-memory-data.service';
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 import { FormsModule } from '@angular/forms';

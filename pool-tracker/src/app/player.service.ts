@@ -44,9 +44,7 @@ export class PlayerService {
 
     getPlayers(): Observable<Player[]> {
         return this.http.get<Player[]>(this.playersUrl).pipe(
-
-            
-            tap((player) => this.log('Players gotten',)),
+            tap((_) => this.log('Players gotten')),
             catchError(this.handleError<Player[]>('getPlayers', [])),
         );
     }
@@ -54,6 +52,7 @@ export class PlayerService {
     winIncrease(player: Player, increment: number): Observable<Player> {
         const patchUrl = `${this.playersUrl}/${player.id}/increase-win`;
         player.win += increment; // optimistic rendering
+        // this.calculatePoints(player);
 
         return this.http.put<Player>(patchUrl, player, this.httpOptions).pipe(
             tap((_) => this.log(`Player${player.id} win implemented`)),
