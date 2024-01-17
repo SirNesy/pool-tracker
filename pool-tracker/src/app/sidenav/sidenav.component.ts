@@ -4,6 +4,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageSnackbarComponent } from '../message-snackbar/message-snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+// import { Player } from '../player';
 
 @Component({
     selector: 'app-sidenav',
@@ -14,6 +15,7 @@ export class SidenavComponent implements OnInit {
     public showFiller = false;
     public isScreenSmall!: boolean;
     public durationInSeconds = 10;
+    // public play: Player = { id: 2, name: 'joy', win: 2, loss: 2, point: 2 };
 
     constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
@@ -36,4 +38,7 @@ export class SidenavComponent implements OnInit {
             this.isScreenSmall = state.matches;
         });
     }
+    // public meat(incomingPlayer: Player): void {
+    //     this.play = incomingPlayer;
+    // }
 }
